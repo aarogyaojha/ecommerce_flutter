@@ -1,3 +1,4 @@
+import 'package:ecommerce_flutter/common/widgets/sucess_screen/sucess_screen.dart';
 import 'package:ecommerce_flutter/features/authentication/screens/login/login.dart';
 import 'package:ecommerce_flutter/utils/constants/image_strings.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
@@ -58,7 +59,16 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(
+                      () => SucessScreen(
+                        image: TImages.staticSuccessIllustration,
+                        title: TTexts.yourAccountCreatedTitle,
+                        subitle: TTexts.yourAccountCreatedSubTitle,
+                        onPressed: () => Get.to(() => LoginScreen()),
+                      ),
+                    );
+                  },
                   child: Text(TTexts.tContinue),
                 ),
               ),
