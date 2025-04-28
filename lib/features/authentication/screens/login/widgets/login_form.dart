@@ -1,11 +1,11 @@
 import 'package:ecommerce_flutter/features/authentication/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/utils.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import '../../password_configuration/forget_password.dart';
 
 class TForm extends StatelessWidget {
   const TForm({super.key});
@@ -47,7 +47,9 @@ class TForm extends StatelessWidget {
 
                 //Forget Password
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => ForgetPasswordScreen());
+                  },
                   child: Text(TTexts.forgetPassword),
                 ),
               ],
