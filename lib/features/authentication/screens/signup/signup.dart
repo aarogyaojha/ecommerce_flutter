@@ -3,8 +3,10 @@ import 'package:ecommerce_flutter/common/widgets/login_signup/social_buttons.dar
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:ecommerce_flutter/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 
+import 'verify_email.dart';
 import 'widgets/signup_form.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -36,7 +38,9 @@ class SignupScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => VerifyEmailScreen());
+                  },
                   child: Text(TTexts.createAccount),
                 ),
               ),
