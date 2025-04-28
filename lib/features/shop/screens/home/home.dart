@@ -1,8 +1,6 @@
-import 'package:ecommerce_flutter/common/widgets/custom_shapes/curved_edges/curved_edges.dart';
-import 'package:ecommerce_flutter/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../common/widgets/custom_shapes/containers/circular_container.dart';
+import '../../../../common/widgets/custom_shapes/containers/primary_heade_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,45 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ClipPath(
-              clipper: TCustomCurvedEdges(),
-              child: Container(
-                color: TColors.primary,
-                padding: EdgeInsets.all(0),
-                child: SizedBox(
-                  height: 400,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: -150,
-                        right: -250,
-                        child: TCircularContainer(
-                          backgroundColor: TColors.textWhite.withOpacity(0.1),
-                        ),
-                      ),
-                      Positioned(
-                        top: 100,
-                        right: -300,
-                        child: TCircularContainer(
-                          backgroundColor: TColors.textWhite.withOpacity(0.1),
-                        ),
-                      ),
-                      // Column(
-                      //   children: [
-                      //     //AppBar
-                      //     //SearchBar
-                      //     //Categories
-                      //   ],
-                      // ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+        child: Column(children: [TPrimaryHeaderContainer(child: Container())]),
       ),
     );
   }
