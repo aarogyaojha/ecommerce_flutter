@@ -1,14 +1,14 @@
-import 'package:ecommerce_flutter/utils/constants/colors.dart';
 import 'package:ecommerce_flutter/utils/constants/image_strings.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_heade_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
-import '../../../../common/widgets/images/rounded_images.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../../../utils/constants/colors.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_categories.dart';
+import 'widgets/promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -56,7 +56,13 @@ class HomeScreen extends StatelessWidget {
             //Body
             Padding(
               padding: EdgeInsets.all(TSizes.defaultSpace),
-              child: TRoundedImage(imageUrl: TImages.promoBanner3),
+              child: TPromoSlider(
+                banners: [
+                  TImages.promoBanner1,
+                  TImages.promoBanner2,
+                  TImages.promoBanner3,
+                ],
+              ),
             ),
           ],
         ),
