@@ -68,6 +68,9 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: TSizes.spaceBtwItems),
+
+                  TSectionHeading(title: "Popular Products"),
+                  SizedBox(height: TSizes.spaceBtwItems),
                   TGridLayout(
                     itemCount: 2,
                     itemBuilder: (_, index) => TProductCardVertical(),

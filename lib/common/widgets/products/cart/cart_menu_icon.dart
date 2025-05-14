@@ -4,14 +4,10 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants/colors.dart';
 
 class TCartCounterIcon extends StatelessWidget {
-  const TCartCounterIcon({
-    super.key,
-    required this.onPressed,
-    required this.iconColor,
-  });
+  const TCartCounterIcon({super.key, required this.onPressed, this.iconColor});
 
   final VoidCallback onPressed;
-  final Color iconColor;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
