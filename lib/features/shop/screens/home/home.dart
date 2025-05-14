@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_heade_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/colors.dart';
 import 'widgets/home_appbar.dart';
@@ -67,7 +68,10 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: TSizes.spaceBtwItems),
-                  TProductCardVertical(),
+                  TGridLayout(
+                    itemCount: 2,
+                    itemBuilder: (_, index) => TProductCardVertical(),
+                  ),
                 ],
               ),
             ),
