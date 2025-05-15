@@ -6,7 +6,9 @@ import '../../../utils/constants/image_strings.dart';
 import '../images/circular_image.dart';
 
 class TUserProfileTile extends StatelessWidget {
-  const TUserProfileTile({super.key});
+  const TUserProfileTile({super.key, required this.onPressed});
+
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class TUserProfileTile extends StatelessWidget {
         ).textTheme.bodyMedium!.apply(color: TColors.white),
       ),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: onPressed,
         icon: Icon(Iconsax.edit, color: TColors.white),
       ),
     );
