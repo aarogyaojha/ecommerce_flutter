@@ -1,6 +1,8 @@
+import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/product_detail_image_slider.dart';
+import 'widgets/rating_share_widget.dart';
 
 class ProductDetail extends StatelessWidget {
   const ProductDetail({super.key});
@@ -15,9 +17,28 @@ class ProductDetail extends StatelessWidget {
             TProductImageSlider(),
 
             //-----------------------Product Details------------------------
+            Padding(
+              padding: EdgeInsets.only(
+                right: TSizes.defaultSpace,
+                left: TSizes.defaultSpace,
+                bottom: TSizes.defaultSpace,
+              ),
+              child: Column(
+                children: [
+                  // ---------------Rating and Share---------------
+                  TRatingAndShare(),
+                  // ---------------Price , Title, Stock and Brand ---------------
+                  // ---------------Attributes---------------
+                  // ---------------Checkout Button---------------
+                  // ---------------Desc---------------
+                  // ---------------Checkout Button---------------
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
