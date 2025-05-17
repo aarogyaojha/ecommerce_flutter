@@ -1,3 +1,4 @@
+import 'package:ecommerce_flutter/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,7 @@ class ProductDetail extends StatelessWidget {
                   // ---------------Rating and Share---------------
                   TRatingAndShare(),
                   // ---------------Price , Title, Stock and Brand ---------------
+                  TProductMetaData(),
                   // ---------------Attributes---------------
                   // ---------------Checkout Button---------------
                   // ---------------Desc---------------
@@ -41,4 +43,3 @@ class ProductDetail extends StatelessWidget {
     );
   }
 }
-
