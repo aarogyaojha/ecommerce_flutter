@@ -2,8 +2,11 @@ import 'package:ecommerce_flutter/common/widgets/texts/section_heading.dart';
 import 'package:ecommerce_flutter/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:ecommerce_flutter/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:ecommerce_flutter/features/shop/screens/product_details/widgets/product_meta_data.dart';
+import 'package:ecommerce_flutter/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
@@ -79,7 +82,7 @@ class ProductDetail extends StatelessWidget {
                     children: [
                       TSectionHeading(title: "Reviews(199)", onPressed: () {}),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => ProductReviewsScreen()),
                         icon: Icon(Iconsax.arrow_right_3),
                       ),
                     ],
