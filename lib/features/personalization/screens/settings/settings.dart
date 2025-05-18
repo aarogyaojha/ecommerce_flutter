@@ -2,6 +2,7 @@ import 'package:ecommerce_flutter/common/widgets/appbar/appbar.dart';
 import 'package:ecommerce_flutter/common/widgets/custom_shapes/containers/primary_heade_container.dart';
 import 'package:ecommerce_flutter/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:ecommerce_flutter/common/widgets/texts/section_heading.dart';
+import 'package:ecommerce_flutter/features/personalization/screens/address/address.dart';
 import 'package:ecommerce_flutter/utils/constants/colors.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,9 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   //-------------------User profile card----------------------
-                  TUserProfileTile(onPressed:()=> Get.to(()=> ProfileScreen()),),
+                  TUserProfileTile(
+                    onPressed: () => Get.to(() => ProfileScreen()),
+                  ),
                   SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
@@ -49,6 +52,7 @@ class SettingsScreen extends StatelessWidget {
                   TSectionHeading(title: "Account Settings"),
                   SizedBox(height: TSizes.spaceBtwItems),
                   TSettingsMenuTile(
+                    onTap: () => Get.to(() => UserAddressScreen()),
                     icon: Iconsax.safe_home,
                     title: "My Address",
                     subTitle: "Set shopping delivery address",
