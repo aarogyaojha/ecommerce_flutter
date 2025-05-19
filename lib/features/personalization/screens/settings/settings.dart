@@ -3,6 +3,7 @@ import 'package:ecommerce_flutter/common/widgets/custom_shapes/containers/primar
 import 'package:ecommerce_flutter/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:ecommerce_flutter/common/widgets/texts/section_heading.dart';
 import 'package:ecommerce_flutter/features/personalization/screens/address/address.dart';
+import 'package:ecommerce_flutter/features/shop/screens/order/order.dart';
 import 'package:ecommerce_flutter/utils/constants/colors.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -63,6 +64,7 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: "Add, remove products and move to checkout",
                   ),
                   TSettingsMenuTile(
+                    onTap: () => Get.to(() => OrderScreen()),
                     icon: Iconsax.bag_tick,
                     title: "My Orders",
                     subTitle: "In Progress and Completed Orders",

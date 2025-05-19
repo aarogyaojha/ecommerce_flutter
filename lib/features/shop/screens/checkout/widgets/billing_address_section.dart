@@ -1,6 +1,5 @@
 import 'package:ecommerce_flutter/common/widgets/texts/section_heading.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
-import 'package:ecommerce_flutter/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class TBillingAddressSection extends StatelessWidget {
@@ -8,7 +7,6 @@ class TBillingAddressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
