@@ -1,7 +1,9 @@
 import 'package:ecommerce_flutter/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:ecommerce_flutter/features/shop/screens/all_products/all_products.dart';
 import 'package:ecommerce_flutter/utils/constants/image_strings.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_heade_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
@@ -70,7 +72,11 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: TSizes.spaceBtwItems),
 
-                  TSectionHeading(title: "Popular Products"),
+                  TSectionHeading(
+                    title: "Popular Products",
+                    showActionButton: true,
+                    onPressed: () => Get.to(() => AllProducts()),
+                  ),
                   SizedBox(height: TSizes.spaceBtwItems),
                   TGridLayout(
                     itemCount: 2,
