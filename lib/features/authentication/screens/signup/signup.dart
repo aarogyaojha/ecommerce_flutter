@@ -31,18 +31,7 @@ class SignupScreen extends StatelessWidget {
               //SignupForm
               TSignupForm(),
 
-              SizedBox(height: TSizes.spaceBtwSections),
-
-              //SignUp Button
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => VerifyEmailScreen());
-                  },
-                  child: Text(TTexts.createAccount),
-                ),
-              ),
+              
               SizedBox(height: TSizes.spaceBtwSections),
 
               //divider
