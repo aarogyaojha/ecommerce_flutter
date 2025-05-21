@@ -1,5 +1,4 @@
 import 'package:ecommerce_flutter/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:ecommerce_flutter/features/authentication/screens/signup/verify_email.dart';
 import 'package:ecommerce_flutter/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -97,16 +96,28 @@ class TSignupForm extends StatelessWidget {
 
           SizedBox(height: TSizes.spaceBtwInputFields),
 
-          //Passwrd-----------------------------------------------
-          TextFormField(
-            controller: controller.password,
-            validator: (value) => TValidator.validatePassword(value),
-            obscureText: true,
-            expands: false,
-            decoration: InputDecoration(
-              labelText: TTexts.password,
-              prefixIcon: Icon(Iconsax.password_check),
-              suffixIcon: Icon(Iconsax.eye_slash),
+          //Password-----------------------------------------------
+          Obx(
+            () => TextFormField(
+              controller: controller.password,
+              validator: (value) => TValidator.validatePassword(value),
+              obscureText: controller.hidePassword.value,
+              expands: false,
+              decoration: InputDecoration(
+                labelText: TTexts.password,
+                prefixIcon: Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    controller.hidePassword.value
+                        ? Iconsax.eye_slash
+                        : Iconsax.eye,
+                  ),
+                  onPressed:
+                      () =>
+                          controller.hidePassword.value =
+                              !controller.hidePassword.value,
+                ),
+              ),
             ),
           ),
 

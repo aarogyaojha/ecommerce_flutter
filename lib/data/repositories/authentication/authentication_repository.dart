@@ -15,7 +15,7 @@ class AuthenticationRepository extends GetxController {
     screenRedirect();
   }
 
-//Function to show relevant screen 
+  //Function to show relevant screen
   screenRedirect() async {
     //Local Storage ------------
     deviceStrorage.writeIfNull('IsFirstTime', true);
@@ -31,4 +31,14 @@ class AuthenticationRepository extends GetxController {
   // [ReAuthenticate] - ReAuthenticate User---------------------------
   // [Email Verification] -Mail Verification--------------------------
   // [Email Authentication] -Forgot Password--------------------------
+
+  // ---------------------------Federated Identity and Social Sign In  --------------------------------
+
+  // [Google Authentication] - Google---------------------------
+  // [Facebook Authentication] -Facebook--------------------------
+
+  // ---------------------------./end Federated Identity and Social Sign In  --------------------------------
+
+  // [logout user] - Valid for any auth---------------------------
+  // [Delete user] -Remove user auth and firestore account--------------------------
 }

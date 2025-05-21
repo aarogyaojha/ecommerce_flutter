@@ -4,8 +4,6 @@ import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:ecommerce_flutter/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'verify_email.dart';
 import 'widgets/signup_form.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -31,7 +29,6 @@ class SignupScreen extends StatelessWidget {
               //SignupForm
               TSignupForm(),
 
-              
               SizedBox(height: TSizes.spaceBtwSections),
 
               //divider
