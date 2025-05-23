@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ecommerce_flutter/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerce_flutter/data/repositories/user/user_repository.dart';
 import 'package:ecommerce_flutter/features/authentication/screens/signup/verify_email.dart';
@@ -8,7 +6,6 @@ import 'package:ecommerce_flutter/utils/constants/image_strings.dart';
 import 'package:ecommerce_flutter/utils/helpers/network_manager.dart';
 import 'package:ecommerce_flutter/utils/popups/full_screen_loader.dart';
 import 'package:ecommerce_flutter/utils/popups/loaders.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +25,7 @@ class SignupController extends GetxController {
 
   GlobalKey<FormState> signupFormKey =
       GlobalKey<FormState>(); //form key for form validatiion
-      
+
   //--Signup
   Future<void> signup() async {
     try {
@@ -50,7 +47,7 @@ class SignupController extends GetxController {
       }
 
       // form validation
-     if (!signupFormKey.currentState!.validate()) {
+      if (!signupFormKey.currentState!.validate()) {
         TLoaders.errorSnackBar(
           title: "Form Error",
           message: "Please fill all required fields correctly",
@@ -94,10 +91,8 @@ class SignupController extends GetxController {
       );
 
       //move to verify email button
-      Get.to(() => VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
     } catch (e) {
-      print("❌ Signup Error: $e");
-
       // Provide more specific error messages
       String errorMessage = "Something went wrong. Please try again.";
 
@@ -116,12 +111,13 @@ class SignupController extends GetxController {
         title: "Registration Failed",
         message: errorMessage,
       );
-    }  finally {
+    } finally {
       //remove loader
       TFullScreenLoader.stopLoading();
     }
   }
-   @override
+
+  @override
   void onClose() {
     email.dispose();
     lastName.dispose();

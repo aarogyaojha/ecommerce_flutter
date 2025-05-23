@@ -9,7 +9,6 @@ import 'package:get_storage/get_storage.dart';
 
 Future<void> main() async {
   // Widgets Binding---------------------------------------------------
-
   final WidgetsBinding widgetsBinding =
       WidgetsFlutterBinding.ensureInitialized();
 
@@ -21,13 +20,12 @@ Future<void> main() async {
   // Await Native Splash---------------------------------------------------
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  // Initialize Firebase---------------------------------------------------
-
+  // Initialize Firebase & Authentication Repository---------------------------------------------------
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 
-  // TODO: Initialize Authetication---------------------------------------------------
+  // Load all material design /themes/localization/ Bindings
 
   runApp(const App());
 }

@@ -1,5 +1,7 @@
 import 'package:ecommerce_flutter/features/authentication/screens/login/login.dart';
 import 'package:ecommerce_flutter/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:ecommerce_flutter/features/authentication/screens/signup/verify_email.dart';
+import 'package:ecommerce_flutter/navigation_menu.dart';
 import 'package:ecommerce_flutter/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:ecommerce_flutter/utils/exceptions/firebase_exceptions.dart';
 import 'package:ecommerce_flutter/utils/exceptions/format_exceptions.dart';
@@ -24,11 +26,20 @@ class AuthenticationRepository extends GetxController {
 
   //Function to show relevant screen
   screenRedirect() async {
-    //Local Storage ------------
-    deviceStrorage.writeIfNull('IsFirstTime', true);
-    deviceStrorage.read('IsFirstTime') != true
-        ? Get.offAll(() => LoginScreen())
-        : Get.offAll(OnboardingScreen());
+    final user = _auth.currentUser;
+    if (user != null) {
+      if (user.emailVerified) {
+        Get.offAll(() => NavigationMenu());
+      } else {
+        Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
+      }
+    } else {
+      //Local Storage ------------
+      deviceStrorage.writeIfNull('IsFirstTime', true);
+      deviceStrorage.read('IsFirstTime') != true
+          ? Get.offAll(() => LoginScreen())
+          : Get.offAll(OnboardingScreen());
+    }
   }
 
   // ---------------------------Email and Password Sign In --------------------------------
@@ -45,12 +56,6 @@ class AuthenticationRepository extends GetxController {
         email: email,
         password: password,
       );
-      
-      print("✅ Firebase Auth Response:");
-      print("User UID: ${userCredential.user?.uid}");
-      print("Email: ${userCredential.user?.email}");
-      print("Is Email Verified: ${userCredential.user?.emailVerified}");
-
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code).message;
@@ -65,8 +70,23 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  // [ReAuthenticate] - ReAuthenticate User---------------------------
   // [Email Verification] -Mail Verification--------------------------
+  Future<void> sendEmailVerification() async {
+    try {
+      await _auth.currentUser?.sendEmailVerification();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Try Again";
+    }
+  }
+  // [ReAuthenticate] - ReAuthenticate User---------------------------
   // [Email Authentication] -Forgot Password--------------------------
 
   // ---------------------------Federated Identity and Social Sign In  --------------------------------
@@ -77,5 +97,22 @@ class AuthenticationRepository extends GetxController {
   // ---------------------------./end Federated Identity and Social Sign In  --------------------------------
 
   // [logout user] - Valid for any auth---------------------------
+  Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(() => LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Try Again";
+    }
+  }
+
   // [Delete user] -Remove user auth and firestore account--------------------------
 }
