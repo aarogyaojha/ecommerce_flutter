@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -114,6 +115,34 @@ class AuthenticationRepository extends GetxController {
   // ---------------------------Federated Identity and Social Sign In  --------------------------------
 
   // [Google Authentication] - Google---------------------------
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      //TRigger the authentication flow
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+
+      // Create a new credential
+      final credentials = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      //once signed in , return usercredential
+      return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Try Again";
+    }
+  }
   // [Facebook Authentication] -Facebook--------------------------
 
   // ---------------------------./end Federated Identity and Social Sign In  --------------------------------
@@ -121,6 +150,7 @@ class AuthenticationRepository extends GetxController {
   // [logout user] - Valid for any auth---------------------------
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(() => LoginScreen());
     } on FirebaseAuthException catch (e) {
