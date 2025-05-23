@@ -2,11 +2,13 @@ import 'package:ecommerce_flutter/common/widgets/appbar/appbar.dart';
 import 'package:ecommerce_flutter/common/widgets/custom_shapes/containers/primary_heade_container.dart';
 import 'package:ecommerce_flutter/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:ecommerce_flutter/common/widgets/texts/section_heading.dart';
+import 'package:ecommerce_flutter/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerce_flutter/features/personalization/screens/address/address.dart';
 import 'package:ecommerce_flutter/features/shop/screens/order/order.dart';
 import 'package:ecommerce_flutter/utils/constants/colors.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:iconsax/iconsax.dart';
@@ -19,6 +21,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AuthenticationRepository());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -123,7 +126,7 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () => controller.logout(),
                       child: Text("Logout"),
                     ),
                   ),

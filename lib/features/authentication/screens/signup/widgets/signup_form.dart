@@ -2,7 +2,6 @@ import 'package:ecommerce_flutter/features/authentication/controllers/signup/sig
 import 'package:ecommerce_flutter/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/sizes.dart';

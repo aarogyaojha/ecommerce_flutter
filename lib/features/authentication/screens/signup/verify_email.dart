@@ -1,7 +1,5 @@
-import 'package:ecommerce_flutter/common/widgets/sucess_screen/sucess_screen.dart';
 import 'package:ecommerce_flutter/data/repositories/authentication/authentication_repository.dart';
 import 'package:ecommerce_flutter/features/authentication/controllers/signup/verify_email_controller.dart';
-import 'package:ecommerce_flutter/features/authentication/screens/login/login.dart';
 import 'package:ecommerce_flutter/utils/constants/image_strings.dart';
 import 'package:ecommerce_flutter/utils/constants/sizes.dart';
 import 'package:ecommerce_flutter/utils/constants/text_strings.dart';
