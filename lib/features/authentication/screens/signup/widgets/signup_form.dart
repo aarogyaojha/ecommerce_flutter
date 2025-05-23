@@ -134,6 +134,13 @@ class TSignupForm extends StatelessWidget {
               child: Text(TTexts.createAccount),
             ),
           ),
+          // SizedBox(
+          //   width: double.infinity,
+          //   child: ElevatedButton(
+          //     onPressed: () => SignupController.instance.testFirebaseAuth(),
+          //     child: Text(TTexts.createAccount),
+          //   ),
+          // ),
         ],
       ),
     );
