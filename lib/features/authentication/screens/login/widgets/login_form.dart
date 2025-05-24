@@ -1,6 +1,5 @@
 import 'package:ecommerce_flutter/features/authentication/controllers/login/login_controller.dart';
 import 'package:ecommerce_flutter/features/authentication/screens/signup/signup.dart';
-import 'package:ecommerce_flutter/navigation_menu.dart';
 import 'package:ecommerce_flutter/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
