@@ -1,3 +1,4 @@
+import 'package:ecommerce_flutter/data/repositories/user/user_repository.dart';
 import 'package:ecommerce_flutter/features/authentication/screens/login/login.dart';
 import 'package:ecommerce_flutter/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:ecommerce_flutter/features/authentication/screens/signup/verify_email.dart';
@@ -18,6 +19,8 @@ class AuthenticationRepository extends GetxController {
 
   final deviceStrorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+
+  User? get authUser => _auth.currentUser;
 
   @override
   void onReady() {
@@ -111,6 +114,30 @@ class AuthenticationRepository extends GetxController {
   }
 
   // [ReAuthenticate] - ReAuthenticate User---------------------------
+
+  Future<void> reAuthenticateWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Please try again.";
+    }
+  }
+
   // [Email Authentication] -Forgot Password--------------------------
   Future<void> sensPasswordResetEmail(String email) async {
     try {
@@ -183,4 +210,21 @@ class AuthenticationRepository extends GetxController {
   }
 
   // [Delete user] -Remove user auth and firestore account--------------------------
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+      Get.offAll(() => LoginScreen());
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw "Something went wrong. Try Again";
+    }
+  }
 }
