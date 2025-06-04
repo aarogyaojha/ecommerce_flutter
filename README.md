@@ -53,18 +53,71 @@ A feature-rich **Flutter Ecommerce App** showcasing sleek UI design, multi-page 
 ```
 lib/
 ├── main.dart
-├── screens/
-│   ├── onboarding/
-│   ├── auth/               # login, signup
-│   ├── home/
-│   ├── store/
-│   ├── wishlist/
-│   ├── profile/
-│   ├── address/
-│   └── my_orders/
-├── widgets/
-├── models/
-└── services/
+├── bindings/                     # Dependency injection
+├── common/                       # Shared widgets or functions
+├── data/                         # API data sources, repositories
+├── features/                     # Modular feature-based architecture
+│   ├── authentication/
+│   │   ├── models/
+│   │   └── screens/
+│   │       ├── login/
+│   │       ├── onboarding/
+│   │       ├── password_configuration/
+│   │       └── signup/
+│   ├── personalization/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   └── screens/
+│   │       ├── address/
+│   │       ├── profile/
+│   │       └── settings/
+│   └── shop/
+│       ├── controllers/
+│       ├── models/
+│       └── screens/
+│           ├── all_products/
+│           ├── brand/
+│           ├── cart/
+│           ├── checkout/
+│           ├── home/
+│           ├── order/
+│           ├── product_details/
+│           ├── product_reviews/
+│           ├── store/
+│           └── sub_category/
+├── localization/                 # App localization support
+├── utils/                        # Utilities and helpers
+│   ├── constants/
+│   ├── device/
+│   ├── exceptions/
+│   ├── formatters/
+│   ├── helpers/
+│   ├── http/
+│   ├── loaders/
+│   ├── local_storage/
+│   ├── logging/
+│   ├── popups/
+│   └── theme/
+```
+
+## 📂 Assets Structure
+
+```
+assets/
+├── logos/
+├── icons/
+│   ├── brands/
+│   ├── categories/
+│   └── payment_methods/
+├── images/
+│   ├── content/
+│   ├── banners/
+│   ├── reviews/
+│   ├── products/
+│   ├── on_boarding_images/
+│   └── animations/
+└── fonts/
+    └── Poppins font family
 ```
 
 ## 💡 How to Run
